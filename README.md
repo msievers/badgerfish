@@ -1,4 +1,4 @@
-# Badgerfish
+# Badgerfish [![Build Status](https://travis-ci.org/msievers/badgerfish.png)](https://travis-ci.org/msievers/badgerfish)
 
 BadgerFish is a convention for translating an XML document into a JSON object.
 
