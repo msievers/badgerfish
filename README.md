@@ -49,3 +49,8 @@ Does not handle child node namespaces as suggested by http://badgerfish.ning.com
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Links
+
+* http://badgerfish.ning.com
+* http://wiki.open311.org/index.php?title=JSON_and_XML_Conversion#The_Badgerfish_Convention
