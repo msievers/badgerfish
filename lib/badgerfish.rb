@@ -1,5 +1,2 @@
-require 'badgerfish/from_xml'
+require 'badgerfish/parser'
 require 'badgerfish/version'
-
-module Badgerfish
-end
