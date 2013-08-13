@@ -16,6 +16,7 @@ module Badgerfish
     #
     def start_element(name)
       new_element = {}
+      name = name.to_s # force string representation of symbols
 
       if @root[name].nil?
         @root[name] = new_element
