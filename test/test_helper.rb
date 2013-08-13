@@ -1,6 +1,7 @@
 # silence that minitest related error about minitest/autorun (since minitest version >= 5)
 gem 'minitest'
 
+require 'active_support/core_ext'
 require 'badgerfish'
 require 'minitest/autorun'
 require 'multi_json'
