@@ -30,7 +30,11 @@ module Badgerfish
     end
 
     def end_element(name)
-      @root = @parents.pop
+      (@root = @parents.pop).inject(@root) do |memo, (key, value)|
+        memo.tap do |hash|
+          hash[key] = nil if value.empty?
+        end
+      end
     end
 
     def attr(name, value)
