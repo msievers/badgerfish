@@ -1,10 +1,19 @@
+require 'htmlentities'
 require 'ox'
 require 'stringio'
 
 module Badgerfish
   class OxSaxParser < Ox::Sax
 
-    def load(xml)
+    def load(xml, options = {})
+      @decode_html_entities =
+      if options[:decode_html_entities].nil?
+        true
+      else
+        !!options[:decode_html_entities]
+      end
+
+      @html_entities_coder = HTMLEntities.new
       @result = @root = {}
       @parents = []
       Ox.sax_parse(self, StringIO.new(xml))
@@ -52,8 +61,7 @@ module Badgerfish
     end
 
     def text(value)
-      @root['$'] = value
+      @root['$'] = @decode_html_entities ? @html_entities_coder.decode(value) : value
     end
-
   end
 end

@@ -3,12 +3,12 @@ require 'badgerfish/ox_sax_parser'
 module Badgerfish
   class Parser
 
-    def initialize()
+    def initialize
       @parser = Badgerfish::OxSaxParser.new
     end
 
-    def load(xml)
-      @parser.load(xml)
+    def load(xml, options = {})
+      @parser.load(xml, options)
     end
 
   end
