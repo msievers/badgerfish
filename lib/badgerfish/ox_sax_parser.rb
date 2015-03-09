@@ -14,6 +14,7 @@ module Badgerfish
       end
 
       @html_entities_coder = HTMLEntities.new
+      @remove_namespaces = !!options[:remove_namespaces]
       @result = @root = {}
       @parents = []
       Ox.sax_parse(self, StringIO.new(xml))
@@ -46,7 +47,7 @@ module Badgerfish
     end
 
     def attr(name, value)
-      unless name.to_s.start_with? 'xmlns'
+      if @remove_namespaces || !name.to_s.start_with?('xmlns')
         @root["@#{name}"] = value
       else
         @root['@xmlns'] ||= {}
