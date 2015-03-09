@@ -31,18 +31,17 @@ module Badgerfish
         @root[name] = new_element
       else
         @root[name] = [@root[name]] unless @root[name].is_a?(Array)
-        @root[name].push new_element
+        @root[name] << new_element
       end
 
-      @parents.push @root
+      @parents << @root
       @root = new_element
     end
 
     def end_element(name)
-      (@root = @parents.pop).inject(@root) do |memo, (key, value)|
-        memo.tap do |hash|
-          hash[key] = nil if value.empty?
-        end
+      (@root = @parents.pop).inject(@root) do |hash, (key, value)|
+        hash[key] = nil if value.empty?
+        hash
       end
     end
 
