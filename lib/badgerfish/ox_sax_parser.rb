@@ -28,6 +28,12 @@ module Badgerfish
       new_element = {}
       name = name.to_s # force string representation of symbols
 
+      if @remove_namespaces
+        if colon_index = name.index(":")
+          name.slice!(0..colon_index)
+        end
+      end
+
       if @root[name].nil?
         @root[name] = new_element
       else
@@ -47,16 +53,18 @@ module Badgerfish
     end
 
     def attr(name, value)
-      if @remove_namespaces || !name.to_s.start_with?('xmlns')
-        @root["@#{name}"] = value
-      else
-        @root['@xmlns'] ||= {}
+      if name.to_s.start_with?('xmlns')
+        unless @remove_namespaces
+          @root['@xmlns'] ||= {}
 
-        if name.to_s.start_with? 'xmlns:'
-          @root['@xmlns'][name[6, name.length]] = value
-        else
-          @root['@xmlns']['$'] = value
+          if name.to_s.start_with? 'xmlns:'
+            @root['@xmlns'][name[6, name.length]] = value
+          else
+            @root['@xmlns']['$'] = value
+          end
         end
+      else
+        @root["@#{name}"] = value
       end
     end
 
