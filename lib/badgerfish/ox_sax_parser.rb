@@ -41,7 +41,7 @@ module Badgerfish
 
     def end_element(name)
       (@root = @parents.pop).inject(@root) do |hash, (key, value)|
-        hash[key] = nil if value.empty?
+        hash[key] = nil if value.nil? || value.empty?
         hash
       end
     end
