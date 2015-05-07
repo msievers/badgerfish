@@ -53,4 +53,4 @@ Does not handle child node namespaces as suggested by http://badgerfish.ning.com
 ## Links
 
 * http://badgerfish.ning.com
-* http://wiki.open311.org/index.php?title=JSON_and_XML_Conversion#The_Badgerfish_Convention
+* http://wiki.open311.org/JSON_and_XML_Conversion/#the-badgerfish-convention
